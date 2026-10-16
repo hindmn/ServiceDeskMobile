@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var sectionSelectionne: Onglet = .accueil
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $sectionSelectionne) {
+            Accueil(sectionSelectionne: $sectionSelectionne)
         }
-        .padding()
+        
     }
 }
 
