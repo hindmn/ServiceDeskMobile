@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct ServiceDeskMobileApp: App {
+    @State private var ticketsViewModel = TicketsViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(ticketsViewModel: ticketsViewModel)
         }
     }
 }
