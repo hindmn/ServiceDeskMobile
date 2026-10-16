@@ -2,7 +2,7 @@
 //  StatutTicket.swift
 //  ServiceDeskMobile
 //
-//  Created by Hind Manouzi (Étudiant)
+//  Créé par Khalil Loghlam.
 //  420-249-AH — Projet 1
 //
 
@@ -37,4 +37,3 @@ enum StatutTicket: String, Codable, CaseIterable, Identifiable {
         }
     }
 }
-

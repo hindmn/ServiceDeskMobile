@@ -2,10 +2,9 @@
 //  PrioriteTicket.swift
 //  ServiceDeskMobile
 //
-//  Created by Hind Manouzi (Étudiant)
+//  Créé par Khalil Loghlam.
 //  420-249-AH — Projet 1
 //
-
 
 import Foundation
 
@@ -32,4 +31,3 @@ enum PrioriteTicket: Int, Codable, CaseIterable, Identifiable, Comparable {
         gauche.rawValue < droite.rawValue
     }
 }
-

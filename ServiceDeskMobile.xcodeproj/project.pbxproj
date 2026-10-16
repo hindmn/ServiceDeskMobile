@@ -6,7 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		41400D2D3082A7C600F6357A /* CategorieTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D253082A7C600F6357A /* CategorieTicket.swift */; };
+		41400D2E3082A7C600F6357A /* StatutTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D273082A7C600F6357A /* StatutTicket.swift */; };
+		41400D2F3082A7C600F6357A /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D283082A7C600F6357A /* Ticket.swift */; };
+		41400D303082A7C600F6357A /* JSONStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D2B3082A7C600F6357A /* JSONStore.swift */; };
+		41400D313082A7C600F6357A /* DonneesDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D2A3082A7C600F6357A /* DonneesDemo.swift */; };
+		41400D323082A7C600F6357A /* PrioriteTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41400D263082A7C600F6357A /* PrioriteTicket.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		41400D253082A7C600F6357A /* CategorieTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieTicket.swift; sourceTree = "<group>"; };
+		41400D263082A7C600F6357A /* PrioriteTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioriteTicket.swift; sourceTree = "<group>"; };
+		41400D273082A7C600F6357A /* StatutTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatutTicket.swift; sourceTree = "<group>"; };
+		41400D283082A7C600F6357A /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		41400D2A3082A7C600F6357A /* DonneesDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonneesDemo.swift; sourceTree = "<group>"; };
+		41400D2B3082A7C600F6357A /* JSONStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStore.swift; sourceTree = "<group>"; };
 		41C15F603081405300EED70C /* ServiceDeskMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ServiceDeskMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -29,11 +44,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41400D293082A7C600F6357A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41400D253082A7C600F6357A /* CategorieTicket.swift */,
+				41400D263082A7C600F6357A /* PrioriteTicket.swift */,
+				41400D273082A7C600F6357A /* StatutTicket.swift */,
+				41400D283082A7C600F6357A /* Ticket.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		41400D2C3082A7C600F6357A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				41400D2A3082A7C600F6357A /* DonneesDemo.swift */,
+				41400D2B3082A7C600F6357A /* JSONStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		41C15F573081405300EED70C = {
 			isa = PBXGroup;
 			children = (
 				41C15F623081405300EED70C /* ServiceDeskMobile */,
 				41C15F613081405300EED70C /* Products */,
+				41400D293082A7C600F6357A /* Models */,
+				41400D2C3082A7C600F6357A /* Services */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +156,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41400D2D3082A7C600F6357A /* CategorieTicket.swift in Sources */,
+				41400D2E3082A7C600F6357A /* StatutTicket.swift in Sources */,
+				41400D2F3082A7C600F6357A /* Ticket.swift in Sources */,
+				41400D303082A7C600F6357A /* JSONStore.swift in Sources */,
+				41400D313082A7C600F6357A /* DonneesDemo.swift in Sources */,
+				41400D323082A7C600F6357A /* PrioriteTicket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
