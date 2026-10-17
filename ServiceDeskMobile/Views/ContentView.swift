@@ -20,10 +20,11 @@ struct ContentView: View {
                         .labelStyle(.iconOnly)
                 }
                 .tag(Onglet.accueil)
-            TicketView()		
+            TicketView(ticketsVewModel: ticketsViewModel)
                 .tabItem{
                     Label("Tickets", systemImage: "ticket")
                         .labelStyle(.iconOnly)
+                        .tag(Onglet.tickets)
                 }
                 .tag(Onglet.tickets)
             ParametreView()

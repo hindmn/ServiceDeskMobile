@@ -9,32 +9,63 @@ import SwiftUI
 struct AccueilView: View {
     let ticketsViewModel: TicketsViewModel
     @Binding var sectionSelectionnee: Onglet
-    @State private var afficherTicket = false
+    @State private var afficherNewTicket = false
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Tableau de bord")
-                        .font(.title2)
-                        .bold()
-                        .foregroundStyle(.black)
-                    ScrollView(.horizontal) {
-                        LazyHStack(
-                    }
-                    
-                    Button("Afficher les Tickets") {
-                        sectionSelectionnee = .tickets
-                    }
-                    .buttonStyle(.bordered)
-                    .foregroundStyle(.black)
+                    header
+                    statistiques
+                    param
                 }
+                .navigationTitle("Accueil")
+                .sheet(isPresented: $afficherNewTicket) {
+                    Text("Formulaire")
+                }
+                .padding(.all)
             }
-            .navigationTitle("Accueil")
+        }
+    }
+    
+    private var header: some View {
+        HStack {
+            Text("Tableau de bord")
+                .font(.title3)
+                .bold()
+            Spacer()
+            Text("\(ticketsViewModel.nbTotalTickets) tickets")
+                .foregroundStyle(.secondary)
+        }
+    }
+    private let rows = [GridItem(.adaptive(minimum: 140))]
+    private var statistiques: some View {
+        LazyVGrid(columns: rows, spacing: 10) {
+            ForEach(StatutTicket.allCases) { statut in
+                StatistiqueView(nombre: ticketsViewModel.nbTickets(statut: statut),
+                                libelle: statut.libellePluriel)}
+        }
+    }
+    private var param: some View {
+        VStack(spacing: 10) {
+            Button{
+                afficherNewTicket = true
+            }label: {
+                Label("Nouveau ticket", systemImage: "plus.circle.fill")
+                    .frame(maxWidth: .infinity)
+            }.buttonStyle(.borderless)
+            Spacer()
+            Button{
+                sectionSelectionnee = .tickets
+            }label: {
+                Label("Voir tous les tickets", systemImage: "list.bullet").frame(maxWidth: .greatestFiniteMagnitude)
+            }.buttonStyle(.borderless)
         }
     }
 }
 
 #Preview {
-    AccueilView(ticketsViewModel: TicketsViewModel(),
-                sectionSelectionnee: .constant(.accueil))
+    AccueilView(
+        ticketsViewModel: TicketsViewModel(),
+        sectionSelectionnee: .constant(.accueil)
+    )
 }
