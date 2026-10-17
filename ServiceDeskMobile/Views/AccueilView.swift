@@ -20,13 +20,15 @@ struct AccueilView: View {
                 }
                 .navigationTitle("Accueil")
                 .sheet(isPresented: $afficherNewTicket) {
-                    Text("Formulaire")
+                    FormulaireView {
+                        ticket in ticketsViewModel.ajouterTicket(ticket)
+                    }
                 }
                 .padding(.all)
             }
         }
     }
-    
+
     private var header: some View {
         HStack {
             Text("Tableau de bord")
@@ -34,30 +36,40 @@ struct AccueilView: View {
                 .bold()
             Spacer()
             Text("\(ticketsViewModel.nbTotalTickets) tickets")
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white.opacity(0.8))
         }
+        .foregroundStyle(.white)
+        .padding(.all, 16)
+        .background(
+            LinearGradient(colors: [.indigo, .blue], startPoint: .leading, endPoint: .trailing),
+            in: RoundedRectangle(cornerRadius: 16)
+        )
     }
     private let rows = [GridItem(.adaptive(minimum: 140))]
     private var statistiques: some View {
         LazyVGrid(columns: rows, spacing: 10) {
             ForEach(StatutTicket.allCases) { statut in
-                StatistiqueView(nombre: ticketsViewModel.nbTickets(statut: statut),
-                                libelle: statut.libellePluriel)}
+                StatistiqueView(
+                    nombre: ticketsViewModel.nbTickets(statut: statut),
+                    libelle: statut.libellePluriel
+                )
+            }
         }
     }
     private var param: some View {
         VStack(spacing: 10) {
-            Button{
+            Button {
                 afficherNewTicket = true
-            }label: {
+            } label: {
                 Label("Nouveau ticket", systemImage: "plus.circle.fill")
                     .frame(maxWidth: .infinity)
-            }.buttonStyle(.borderless)
+            }.buttonStyle(.borderedProminent)
             Spacer()
-            Button{
+            Button {
                 sectionSelectionnee = .tickets
-            }label: {
-                Label("Voir tous les tickets", systemImage: "list.bullet").frame(maxWidth: .greatestFiniteMagnitude)
+            } label: {
+                Label("Voir tous les tickets", systemImage: "list.bullet")
+                    .frame(maxWidth: .greatestFiniteMagnitude)
             }.buttonStyle(.borderless)
         }
     }

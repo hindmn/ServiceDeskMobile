@@ -27,15 +27,15 @@ struct TicketView: View {
                     }
                 }
             }
-        }
-        .navigationTitle("Tickets")
-        .searchable(text: $ticketsVewModel.recherchee, prompt: "Rechercher")
-        .navigationDestination(for: UUID.self) {
-            id in
-            InformationTicketView(
-                ticketsVewModel: ticketsVewModel,
-                ticketID: id
-            )
+            .navigationTitle("Tickets")
+            .searchable(text: $ticketsVewModel.recherchee, prompt: "Rechercher")
+            .navigationDestination(for: UUID.self) {
+                id in
+                InformationTicketView(
+                    ticketsVewModel: ticketsVewModel,
+                    ticketID: id
+                )
+            }
         }
     }
     private var message: some View {
@@ -58,7 +58,7 @@ struct TicketView: View {
             ForEach(StatutTicket.allCases) { statut in
                 Text(statut.libelle).tag(StatutTicket?.some(statut))
             }
-        }.pickerStyle(.palette)
+        }.pickerStyle(.automatic)
     }
     private var trie: some View {
         Picker("Trier", selection: $ticketsVewModel.ordreTri) {

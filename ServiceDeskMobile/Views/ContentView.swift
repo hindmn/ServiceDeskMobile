@@ -9,36 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     let ticketsViewModel: TicketsViewModel
+    let parametresViewModel: ParametreViewModel
     @State private var sectionSelectionne: Onglet = .accueil
     var body: some View {
         TabView(selection: $sectionSelectionne) {
             AccueilView(
                 ticketsViewModel: ticketsViewModel,
-                sectionSelectionnee: $sectionSelectionne)
-                .tabItem{
-                    Label("Accueil", systemImage: "house")
-                        .labelStyle(.iconOnly)
-                }
-                .tag(Onglet.accueil)
+                sectionSelectionnee: $sectionSelectionne
+            )
+            .tabItem {
+                Label("Accueil", systemImage: "house")
+                    .labelStyle(.iconOnly)
+            }
+            .tag(Onglet.accueil)
             TicketView(ticketsVewModel: ticketsViewModel)
-                .tabItem{
+                .tabItem {
                     Label("Tickets", systemImage: "ticket")
                         .labelStyle(.iconOnly)
                         .tag(Onglet.tickets)
                 }
                 .tag(Onglet.tickets)
-            ParametreView()
-                .tabItem{
-                    Label("Paramètres", systemImage: "gearshape")
-                        .labelStyle(.iconOnly)
-                }
-                .tag(Onglet.parametres)
+            ParametreView(
+                ticketsViewModel: ticketsViewModel,
+                parametresViewModel: parametresViewModel
+            )
+            .tabItem {
+                Label("Paramètres", systemImage: "gearshape")
+                    .labelStyle(.iconOnly)
+            }
+            .tag(Onglet.parametres)
         }
-        .tint(.green)
-        
+
     }
 }
 
 #Preview {
-    ContentView(ticketsViewModel: TicketsViewModel())
+    ContentView(
+        ticketsViewModel: TicketsViewModel(),
+        parametresViewModel: ParametreViewModel()
+    )
 }

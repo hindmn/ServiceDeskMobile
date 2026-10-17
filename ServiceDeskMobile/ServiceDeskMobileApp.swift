@@ -10,9 +10,16 @@ import SwiftUI
 @main
 struct ServiceDeskMobileApp: App {
     @State private var ticketsViewModel = TicketsViewModel()
+    @State private var parametreViewModel = ParametreViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView(ticketsViewModel: ticketsViewModel)
+            ContentView(
+                ticketsViewModel: ticketsViewModel,
+                parametresViewModel: parametreViewModel
+            )
+            .preferredColorScheme(
+                parametreViewModel.modeSombre ? .dark : .light
+            )
         }
     }
 }
