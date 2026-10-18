@@ -30,21 +30,19 @@ struct ParametreView: View {
                     }
                 }
             }
-            Text("Paramètres")
-                .foregroundStyle(.secondary)
-                .navigationTitle("Paramètres")
-                .confirmationDialog(
-                    "Voulez-vous réinitialiser vos données ?",
-                    isPresented: $confirmation,
-                    titleVisibility: .visible
-                ) {
-                    Button("Réinitialiser", role: .destructive) {
-                        ticketsViewModel.reinitialiser()
-                    }
-                    Button("Annuler", role: .cancel) {}
-                } message: {
-                    Text("Tous vos tickets seront supprimés!")
+            .navigationTitle("Paramètres")
+            .confirmationDialog(
+                "Voulez-vous réinitialiser vos données ?",
+                isPresented: $confirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Réinitialiser", role: .destructive) {
+                    ticketsViewModel.reinitialiser()
                 }
+                Button("Annuler", role: .cancel) {}
+            } message: {
+                Text("Tous vos tickets seront supprimés!")
+            }
         }
     }
 }

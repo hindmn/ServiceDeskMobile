@@ -37,6 +37,7 @@ final class TicketsViewModel {
 
     var recherchee = ""
     var statutFiltre: StatutTicket? = nil
+    var prioriteFiltre: PrioriteTicket? = nil
     var ordreTri: OrdreTri = .plusRecent
     var afficherTickets: [Ticket] {
         let results = tickets.filter { ticket in
@@ -53,8 +54,14 @@ final class TicketsViewModel {
             || ticket.categorie.libelle.localizedCaseInsensitiveContains(texte)
     }
     private func filtrer(_ ticket: Ticket) -> Bool {
-        guard let statutFiltre else { return true }
-        return ticket.statut == statutFiltre
+        let statutFiltre = statutFiltre == nil || ticket.statut == statutFiltre
+        let prioriteFiltre = prioriteFiltre == nil || ticket.priorite == prioriteFiltre
+        return statutFiltre && prioriteFiltre
+    }
+    func afficherPrioriteCritique(){
+        recherchee = ""
+        statutFiltre = nil
+        prioriteFiltre = .critique
     }
     private func trie(_ listeTicket: [Ticket]) -> [Ticket] {
         switch ordreTri {
@@ -96,5 +103,13 @@ final class TicketsViewModel {
     func reinitialiser() {
         tickets = DonneesDemo.tickets()
         enregistrer()
+    }
+    var resolution: Double{
+        guard nbTotalTickets > 0 else{ return 0}
+        let ticketTraite = nbTickets(statut: .resolu) + nbTickets(statut: .ferme)
+        return Double(ticketTraite) / Double(nbTotalTickets)
+    }
+    var nbTicketsCritique: Int{
+        tickets.filter{ $0.priorite == .critique}.count
     }
 }

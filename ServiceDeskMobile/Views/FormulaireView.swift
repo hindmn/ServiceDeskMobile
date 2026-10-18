@@ -46,8 +46,11 @@ struct FormulaireView: View {
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Nom", text: $titre)
-                TextField("Description", text: $description)
+                Section("Demande"){
+                    
+                }
+                TextField("Titre", text: $titre)
+                TextEditor(text: $description).frame(minHeight: 70)
 
                 Picker("Catégorie", selection: $categorie) {
                     ForEach(CategorieTicket.allCases) {

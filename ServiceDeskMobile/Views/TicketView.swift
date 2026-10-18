@@ -13,6 +13,7 @@ struct TicketView: View {
             List {
                 Section {
                     statutFiltre
+                    prioriteFiltre
                     trie
                 }
                 Section("Les demandes") {
@@ -63,6 +64,14 @@ struct TicketView: View {
     private var trie: some View {
         Picker("Trier", selection: $ticketsVewModel.ordreTri) {
             ForEach(OrdreTri.allCases) { ordre in Text(ordre.titre).tag(ordre)
+            }
+        }
+    }
+    private var prioriteFiltre: some View {
+        Picker("Priorite", selection: $ticketsVewModel.prioriteFiltre) {
+            Text("Tous").tag(PrioriteTicket?.none)
+            ForEach(PrioriteTicket.allCases) { priorite in
+                Text(priorite.libelle).tag(PrioriteTicket?.some(priorite))
             }
         }
     }

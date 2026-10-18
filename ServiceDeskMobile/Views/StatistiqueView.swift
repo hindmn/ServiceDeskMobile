@@ -8,24 +8,46 @@ import SwiftUI
 
 struct StatistiqueView: View {
     let nombre: Int
+    let total: Int
     let libelle: String
+    let icone: String
+    let couleur: Color
 
+    private var proportion: Double {
+        total > 0 ? Double(nombre) / Double(total) : 0
+    }
     var body: some View {
-        VStack(spacing: 5) {
-            Text("\(nombre)")
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                .foregroundStyle(.tint)
-                .shadow(color: .black.opacity(0.08), radius: 6, y: 3)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 5) {
+                Image(systemName: icone).font(.headline)
+                    .foregroundStyle(couleur)
+                    .frame(width: 36, height: 36)
+                    .background(couleur.opacity(0.15), in: Circle())
+                Spacer()
+                Text("\(nombre)")
+                    .font(.system(.title, design: .rounded, weight: .bold))
+            }
             Text("\(libelle)")
-                .font(.subheadline)
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.secondary)
+            ProgressView(value: proportion).tint(couleur)
         }
-        .frame(maxWidth: .infinity)
-        .frame(height: 150)
-        .background(Color.accentColor.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding()
+        .background(
+            Color(.secondarySystemGroupedBackground),
+            in: RoundedRectangle(cornerRadius: 18)
+        )
+        .shadow(color: .black.opacity(0.06), radius: 8, y: 4)
     }
 }
 
 #Preview {
-    StatistiqueView(nombre: 3, libelle: "New")
+    StatistiqueView(
+        nombre: 3,
+        total: 12,
+        libelle: "Nouveaux",
+        icone: "sparkles",
+        couleur: .blue
+    )
+    .padding()
 }

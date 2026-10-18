@@ -89,6 +89,7 @@ struct InformationTicketView: View {
             }
         }
         .alert("Supprimer", isPresented: $confimSupp){
+            Button("Annuler", role: .cancel){}
             Button("Supprimer", role: .destructive){
                 ticketsVewModel.supprimer(id: ticketID)
                 dismiss()
