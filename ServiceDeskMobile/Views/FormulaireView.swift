@@ -47,11 +47,9 @@ struct FormulaireView: View {
         NavigationStack {
             Form {
                 Section("Demande"){
-                    
+                    TextField("Titre", text: $titre)
+                    TextEditor(text: $description).frame(minHeight: 70)
                 }
-                TextField("Titre", text: $titre)
-                TextEditor(text: $description).frame(minHeight: 70)
-
                 Picker("Catégorie", selection: $categorie) {
                     ForEach(CategorieTicket.allCases) {
                         categorie in Text(categorie.libelle).tag(categorie)

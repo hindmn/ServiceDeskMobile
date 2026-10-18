@@ -15,4 +15,7 @@ Les fichiers JSON:
 
 Les principaux choix techniques:
 - On utilise "afficherTickets" qui applique la recherche insensible à la casse sur le titre, description et catégorie, puis un filtre sur le statut et la priorite. Cette variable retourne par la suite la liste de tickets triées
-- Pour la section "Tickets", on utilise
+- Pour la section "Tickets", on utilise un NavigationLink avec la valeur du ticketID pour relier le ticket au ViewModel.
+- Confirmation: J'utilise confirmationDialog avec role: .destructive pour la réinitialisation et alert avec role: .destructive pour la suppression.
+- Formulaire: Un seul fichier de formulaire pour la création et modification des tickets. Le bouton Annuler ne modifie rien, on continue avec l'état de départ.
+
